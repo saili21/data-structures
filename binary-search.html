@@ -1,0 +1,35 @@
+<html>
+<head>
+  
+</head>
+<body>
+  Click the button
+  <button onclick="binarySearch(100);">Output</button>
+  Mid : <p id="demo"></p>
+  value is at position : <p id="demo1"></p>
+</body>
+<script type="text/javascript">
+  function binarySearch(value){
+    var points = [40, 100, 1, 5, 25, 10];
+    points.sort(function(a, b){return a-b});
+    low = 0;
+    high = points.length-1;
+    
+    while (low <= high) {
+    	var mid  = parseInt((high+low) / 2);
+    	console.log('mid',mid);
+    	document.getElementById("demo").innerHTML = mid;
+	    if(points[mid] == value) {
+	    	document.getElementById("demo1").innerHTML = mid;
+	    	break;
+	    } else if (value > points[mid]) {
+	    	low  = mid + 1;
+	    	console.log('low',low);
+	    } else if(value < points[mid]) {
+	    	high = mid - 1;
+	    	console.log('high',high)
+	    }
+    }
+  }
+</script>
+</html>
