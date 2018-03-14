@@ -3,10 +3,9 @@
   
 </head>
 <body>
+<h2>Binary Search</h2>
   Click the button
-  <button onclick="binarySearch(100);">Output</button>
-  Mid : <p id="demo"></p>
-  value is at position : <p id="demo1"></p>
+  <button onclick="binarySearch(666);">Output</button>
 </body>
 <script type="text/javascript">
   function binarySearch(value){
@@ -17,17 +16,16 @@
     
     while (low <= high) {
     	var mid  = parseInt((high+low) / 2);
-    	console.log('mid',mid);
-    	document.getElementById("demo").innerHTML = mid;
 	    if(points[mid] == value) {
-	    	document.getElementById("demo1").innerHTML = mid;
+	    	console.log('Element ' + value + ' is at position: ' + mid);
 	    	break;
-	    } else if (value > points[mid]) {
+	    } else if (value > points[mid] && value <= points[high]) {
 	    	low  = mid + 1;
-	    	console.log('low',low);
-	    } else if(value < points[mid]) {
+	    } else if(value < points[mid] && value >= points[low]) {
 	    	high = mid - 1;
-	    	console.log('high',high)
+	    } else {
+	    	console.log('Not Found!!!');
+	    	break;
 	    }
     }
   }

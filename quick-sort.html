@@ -1,0 +1,58 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    Quick sort
+    <br> Click the button
+    <button onclick="quicksort();">Output</button>
+    See console for output:
+    <p id="demo"></p>
+</body>
+<script type="text/javascript">
+function quicksort() {
+    var myArray = [40, 100, 1, 5, 25, 10];
+    console.log('Original array: ', myArray);
+
+    quicksorthelper(myArray, 0, (myArray.length - 1));
+    console.log('Sorted array: ', myArray);
+
+}
+
+function quicksorthelper(list, first, last) {
+    if (first < last) {
+        pivot = first;
+        leftmark = first;
+        rightmark = last;
+
+        while (leftmark < rightmark) {
+
+            while (leftmark <= last && list[leftmark] <= list[pivot]) {
+                leftmark = leftmark + 1;
+            }
+
+            while (list[rightmark] > list[pivot]) {
+                rightmark = rightmark - 1;
+            }
+
+            if (leftmark < rightmark) {
+                temp = list[leftmark];
+                list[leftmark] = list[rightmark];
+                list[rightmark] = temp;
+            }
+        }
+
+        temp = list[pivot];
+        list[pivot] = list[rightmark];
+        list[rightmark] = temp;
+
+        quicksorthelper(list, first, rightmark - 1);
+        quicksorthelper(list, rightmark + 1, last);
+    } else {
+        return list;
+    }
+}
+</script>
+
+</html>

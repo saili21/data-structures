@@ -1,0 +1,98 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    Singly LinkList
+    <br> Click the button
+    <button onclick="createSinglyLinkList();">Output</button>
+    See console for output:
+    <p id="demo"></p>
+</body>
+<script type="text/javascript">
+function SinglyLinkList(val) {
+    this.head = null;
+}
+
+SinglyLinkList.prototype.push = function(val) {
+    var node = {
+        value: val,
+        next: null
+    }
+
+    if (!this.head) {
+        this.head = node;
+    } else {
+        current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+
+        current.next = node;
+    }
+}
+
+SinglyLinkList.prototype.print = function() {
+    var string = '';
+    var current = this.head;
+    while (current) {
+        string += current.value + ' ';
+        current = current.next;
+    }
+    console.log('List: ', string.trim());
+};
+
+SinglyLinkList.prototype.remove = function(data) {
+    var current = this.head;
+    var previous = this.head;
+    console.log('head',this.head);
+    while (current) {
+        if (current.value === data) {
+            if (current === this.head) {
+                this.head = this.head.next;
+                break;
+            } else {
+                previous.next = current.next;
+                break;
+            }
+            
+        } else {
+            previous = current;
+        }
+        current = current.next;
+    }
+}
+
+SinglyLinkList.prototype.reverse = function(data) { 
+    var current = this.head;
+    var previousNode , nextNode;
+    var reverArray;
+    while (current) { 
+        console.log('current',current);
+        // previousNode = current;
+        nextNode = current.next;
+        current.next = previousNode;
+        previousNode = current;
+        current = nextNode;
+        // current = current.next;
+    }
+    this.head = previousNode;
+
+}
+
+function createSinglyLinkList() {
+    var s1 = new SinglyLinkList();
+
+    s1.push(2);
+    s1.push(3);
+    s1.push(7);
+    s1.push(8);
+    s1.reverse();
+    // s1.remove(8);
+    s1.print();
+
+}
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    Insertion sort Click the button
+    <button onclick="bubbleSort();">Output</button>
+    See console for output:
+    <p id="demo"></p>
+</body>
+<script type="text/javascript">
+function bubbleSort() {
+    var myArray = [40, 100, 1, 5, 25, 10];
+    console.log('Original array: ', myArray);
+    for (i = 0; i < myArray.length; i++) {
+        for (j = 0; j <= i + 1; j++) {
+            if (myArray[j] > myArray[i]) {
+                var a = myArray[i];
+                myArray[i] = myArray[j];
+                myArray[j] = a;
+            }
+        }
+    }
+    console.log('Sorted array: ', myArray);
+
+}
+</script>
+
+</html>

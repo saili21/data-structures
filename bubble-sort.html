@@ -1,0 +1,39 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    Bubble sort Click the button
+    <button onclick="bubbleSort();">Output</button>
+    See console for output:
+    <p id="demo"></p>
+</body>
+<script type="text/javascript">
+function bubbleSort() {
+    var myArray = [40, 100, 1, 5, 25, 10];
+    // for(k = 0; k < myArray.length; k++) {
+      console.log('Original array: ',myArray);
+    // }
+    var swapped = false;
+    for (i = 0; i < myArray.length; i++) {
+        for (j = 0; j < myArray.length; j++) {
+            if (myArray[j] > myArray[j + 1]) {
+                var a = myArray[j];
+                myArray[j] = myArray[j + 1];
+                myArray[j + 1] = a;
+                swapped = true;
+            }
+        }
+        if (!swapped) {
+            break;
+        }
+    }
+
+    // for(k = 0; k < myArray.length; k++) {
+      console.log('Sorted array: ',myArray);
+    // }
+}
+</script>
+
+</html>

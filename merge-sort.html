@@ -1,0 +1,58 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    Merge sort
+    <br> Click the button
+    <button onclick="callMergeSort();">Output</button>
+    See console for output:
+    <p id="demo"></p>
+</body>
+<script type="text/javascript">
+
+function callMergeSort() {
+   arr = [40,10,25,1,5,100];
+    console.log('original aar:',arr);
+  mergeSort(arr);
+}
+
+function mergeSort(arr){
+   
+   var len = arr.length;
+   if(len <2)
+      return arr;
+   var mid = Math.floor(len/2),
+       left = arr.slice(0,mid),
+       right =arr.slice(mid);
+   //send left and right to the mergeSort to broke it down into pieces
+   //then merge those
+   
+
+   a = merge(mergeSort(left),mergeSort(right));
+   console.log('sorted arr1:',a);
+   return a;
+}
+function merge(left, right){
+  var result = [],
+      lLen = left.length,
+      rLen = right.length,
+      l = 0,
+      r = 0;
+  while(l < lLen && r < rLen){
+     if(left[l] < right[r]){
+       result.push(left[l++]);
+     }
+     else{
+       result.push(right[r++]);
+    }
+  }  
+  //remaining part needs to be addred to the result
+   // console.log('sorted arr:',result);
+
+  return result.concat(left.slice(l)).concat(right.slice(r));
+}
+</script>
+
+</html>

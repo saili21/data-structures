@@ -1,0 +1,31 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    Linear search (O(n)) <br> Click the button
+    <button onclick="linearSearch(48);">Output</button>
+    See console for output:
+    <p id="demo"></p>
+</body>
+<script type="text/javascript">
+function linearSearch(data) {
+    var array = [4,14,25,5,47,67,1];
+    console.log('Original array:',array);
+    var findIndex = null;
+    for(i=0; i<array.length; i++) {
+        if(array[i] === data) {
+            console.log('Element '+ data +' is at position', i);
+            findIndex = i;
+            return i;
+        } 
+    }
+
+    if(!findIndex) {
+      console.log('Not found!!!');
+    }
+}
+</script>
+
+</html>
