@@ -1,0 +1,31 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <h2>Find Key in Hash</h2> Click the button
+    <button onclick="findKey('name');">Output</button>
+</body>
+<script type="text/javascript">
+function findKey(searchKey) {
+    var a = { "name": "Sailli", "age": 26 };
+    // if (Object.keys(a).includes(key)) {
+    //     console.log('Found key');
+    // } else {
+    //     console.log('Key not found');
+    // }
+
+    for (var key in a) {
+        if(key === searchKey) {
+            console.log('Found key');
+        } else {
+        console.log('Key not found'); }
+        if (a[key] === 26) {
+            console.log(key);
+        }
+    }
+}
+</script>
+
+</html>

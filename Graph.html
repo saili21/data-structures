@@ -1,0 +1,128 @@
+<html>
+
+<head>
+</head>
+
+<body>
+    <h2>Graph</h2> Click the button
+    <button onclick="createGraph();">Output</button>
+</body>
+<script type="text/javascript">
+function createGraph() {
+    Graph();
+    addvertex('A');
+    addvertex('B');
+    addvertex('C');
+    addvertex('D');
+    addEdge('A', 'B');
+    addEdge('C', 'D');
+    addEdge('B', 'C');
+    addEdge('B', 'D');
+    addEdge('A', 'D');
+    printGraph();
+    dfs('A');
+    bfs('A');
+}
+
+function Graph() {
+    this.AdjList = new Map();
+}
+
+function addvertex(v) {
+    this.AdjList.set(v, []);
+}
+
+function addEdge(src, dest) {
+    this.AdjList.get(src).push(dest);
+    this.AdjList.get(dest).push(src);
+}
+
+function printGraph() {
+    console.log('this.AdjList', this.AdjList);
+
+    var get_keys = this.AdjList.keys();
+    var uniqueEdges = [];
+    for (var i of get_keys) {
+        var get_values = this.AdjList.get(i);
+
+        var conc = "";
+
+        for (var j of get_values) {
+            conc += j + " ";
+            console.log(i + "->" + j + '\n'); // print all edges
+
+            //count unique edges
+            if (!uniqueEdges.includes(i + j) && !uniqueEdges.includes(j + i)) {
+                uniqueEdges.push(i + j);
+            }
+        }
+        // console.log(i + " -> " + conc); // print whole graph
+    }
+    console.log('Unique Edges count:', uniqueEdges.length);
+}
+
+function dfs(startingNode) {
+    console.log('========================================');
+
+    var visited = [];
+    var keys = this.AdjList.keys();
+
+    for (var key of keys) {
+        visited[key] = false;
+    }
+    console.log('visited', visited);
+    this.DFSUtil(startingNode, visited);
+}
+
+function DFSUtil(vert, visited) {
+    visited[vert] = true;
+    console.log('dfs: ', vert);
+
+    var get_neighbours = this.AdjList.get(vert);
+    console.log('get_neighbours', get_neighbours);
+
+    for (var i in get_neighbours) {
+        var get_elem = get_neighbours[i];
+        if (!visited[get_elem])
+            this.DFSUtil(get_elem, visited);
+    }
+}
+
+
+function bfs(startingNode) {
+    console.log('========================================');
+
+    var visited = [];
+    var keys = this.AdjList.keys();
+    var queue = [startingNode];
+    for (var key of keys) {
+        visited[key] = false;
+    }
+    console.log('visited', visited);
+    this.BFSUtil(startingNode, visited, queue);
+}
+
+function BFSUtil(vert, visited, queue) {
+    if(!visited[vert])
+      visited[vert] = true;
+    console.log('BFS: ', vert);
+    if (queue[0] == vert) {
+        queue.shift();
+    }
+
+    var get_neighbours = this.AdjList.get(vert);
+    console.log('get_neighbours', get_neighbours);
+
+    for (var i in get_neighbours) {
+        var get_elem = get_neighbours[i];
+        if (!visited[get_elem]) {
+            visited[get_elem] = true;
+            queue.push(get_elem);
+        }
+    }
+    if (queue.length > 0)
+        BFSUtil(queue[0], visited, queue)
+}
+</script>
+
+</html>
